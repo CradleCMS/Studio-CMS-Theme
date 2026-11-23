@@ -5,4 +5,4 @@ Theme to be used for Cradle CMS: https://cradlecms.com/
 The theme is based on: 
 
 * Gold Landingpage on Codepen.io https://codepen.io/sir-marc/pen/xzEQXp/
-* OK.css v1.2.0 | MIT License | github.com/andrewh0/okcss
+* OK.css v1.2.0 | MIT License | https://github.com/andrewh0/okcss
