@@ -1,7 +1,6 @@
+Theme to be used for Cradle CMS: https://cradlecms.com/
 
 <img width="750" height="434" alt="Studio-theme" src="https://github.com/user-attachments/assets/604c3ba0-6e84-46bd-ba53-eeed76794799" />
-
-**Credits**
 
 The theme is based on: 
 
