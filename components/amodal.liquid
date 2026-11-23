@@ -1,0 +1,212 @@
+<!-- CradleCMS modal dialog component, version 1.1.2; https://github.com/cradle-component/modal -->
+<template id="a-modal-template">
+<div x-data="{ ...amodalDialog(), ...$el.parentElement.data() }">
+<dialog class="amodal nav" closedby="closerequest">
+    <button class="close" tabindex="0">
+        <svg aria-hidden="true" fill="currentColor" width="40" height="40" viewBox="0 0 24 24">
+            <g data-name="Layer 2">
+            	<g data-name="close">
+            		<rect width="40" height="40" transform="rotate(180 12 12)" opacity="0"/>
+            		<path d="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"/>
+            	</g>
+            </g>
+        </svg>
+    </button>
+</dialog>
+</div>
+</template>
+<style>
+a-modal {
+    visibility: hidden;
+    --a: center;
+    --w: max-content;
+    --s: 0 19px 38px rgb(0 0 0 / 12%), 0 15px 12px rgb(0 0 0 / 22%);
+    --b: rgb(0 0 0 / 70%);
+    --g: 0.25rem;
+    --p: 1rem;
+    --t: 0.3s;
+}
+dialog.amodal {
+  box-shadow: var(--s);
+  margin: auto;
+  overscroll-behavior: contain;
+  padding-top: 1rem;
+  width: var(--w);
+  outline:none!important;
+    height: 100vh;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+dialog.amodal:open {
+    border: 0;
+}
+dialog.amodal::backdrop {
+  transition: background-color var(--t) ease-in-out;
+  background-color: var(--b); /* safari on ios does not support variables on backdrop */
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+dialog.amodal.closing::backdrop {
+  background-color:rgb(0 0 0 / 0);
+}
+dialog.amodal button.close {
+    position: absolute;
+    top: 0.4rem;
+    right: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+dialog.amodal .content {
+    display: flex;
+    flex-direction: column;
+    align-items: var(--a);
+    gap: var(--g);
+    padding: var(--p);
+    justify-content: space-between; 
+    height: 100%;
+}
+dialog.amodal.effect {
+  transition: all ease var(--t);
+}
+@starting-style {
+  dialog[open].amodal.fadein {
+    opacity: 0;
+  }
+  dialog[open].amodal.popup {
+    transform: scale(0.6);
+  }
+}
+dialog[open].amodal.fadeout.closing {
+  opacity: 0;
+}
+dialog[open].amodal.popout.closing {
+  transform: scale(1.2);
+  opacity: 0;
+}
+dialog[open].amodal.popin.closing {
+  transform: scale(0.8);
+  opacity: 0;
+}
+</style>
+<script>
+    function amodalDialog() { 
+        return {
+            target: undefined,
+            dialog: undefined,
+            infocus: undefined,
+            init() {
+                this.dialog = this.el.querySelector("dialog.amodal");
+                this.dialog.querySelector(".close").addEventListener('click',(ev) => {
+                    ev.stopPropagation();
+                    ev.preventDefault();
+                    this.close();
+                });
+                if(this.target) {
+                    document.getElementById(this.target).addEventListener('click', (ev) => {
+                        ev.stopPropagation();
+                        ev.preventDefault();
+                        this.open();
+                    });
+                }
+                
+                if(this.width) {
+                    this.el.style.setProperty("--w", this.width);
+                }
+                if(this.align) {
+                    this.el.style.setProperty("--a", this.align);
+                }
+                if(this.padding) {
+                    this.el.style.setProperty("--p", this.padding);
+                }
+                if(this.gap) {
+                    this.el.style.setProperty("--g", this.gap);
+                }
+                if(this.shadow) {
+                    this.el.style.setProperty("--s", this.shadow);
+                }
+                if(this.backdrop) {
+                    this.el.style.setProperty("--b", this.backdrop);
+                }
+                if(this.timing) {
+                    this.el.style.setProperty("--t", this.timing);
+                }
+                // modal position
+                if(this.top) {
+                    this.dialog.style.setProperty("margin-top", this.top);
+                }
+                if(this.bottom) {
+                    this.dialog.style.setProperty("margin-bottom", this.bottom);
+                }
+                if(this.left) {
+                    this.dialog.style.setProperty("margin-left", this.left);
+                }
+                if(this.right) {
+                    this.dialog.style.setProperty("margin-right", this.right);
+                }
+                // effects
+                if(this.effect) {
+                    this.dialog.classList.add("effect", ...this.effect.split(" "));
+                }
+                this.dialog.addEventListener("close",(ev) => {
+                    ev.stopPropagation();
+                    ev.preventDefault();
+                    document.activeElement.blur();
+                    if(this.infocus) this.infocus.focus();
+                });
+            },
+            open() {
+                // currently focused element which we restore on close
+                const ae = document.activeElement;
+                if(ae && ae.getAttribute("tabindex") != "-1") {
+                    this.infocus = ae;
+                }
+                this.dialog.showModal();
+                this.focus();
+            },
+            close() {
+                document.activeElement.blur();
+                if(!this.effect) {
+                  this.dialog.close();
+                  return;
+                }
+                // allow effects to complete while closing
+                const d = this.dialog;
+                d.classList.add("closing");
+                Promise.all(d.getAnimations({ subtree: true }).map(a => a.finished)).
+                then(() => d.close()).then( () => d.classList.remove("closing"));
+            },
+            focus(){
+                // sets focus on the first focusable element
+                let a = Array.from(this.dialog.querySelectorAll('button:not(.close),input:not([type="hidden"]),[href],select,textarea,[tabindex]:not(:is([tabindex="-1"],.close))'));
+                if(a && a.length > 0) {
+                    a[0].focus();
+                }
+            }
+        }
+    }
+    // registers <a-modal> component
+    class amodalComponent extends HTMLElement {
+        #data
+        connectedCallback() {
+            // we don't use shadow DOM due to interaction with external dependencies
+            const template = document.getElementById('a-modal-template');
+            const content = document.createElement("div")
+            content.className = "content";
+            content.innerHTML = this.innerHTML;
+            const amodal = template.content.cloneNode(true);
+            this.replaceChildren(amodal);
+            this.querySelector(".amodal").append(content);
+            this.#data = {el:this};
+            this.getAttributeNames().map(attr => {
+                this.#data[attr] = this.getAttribute(attr)
+            });
+        }
+    
+        data() {
+            return this.#data
+        }
+    }
+    customElements.get('a-modal') || customElements.define('a-modal', amodalComponent)
+</script>

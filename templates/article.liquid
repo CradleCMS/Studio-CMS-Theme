@@ -1,0 +1,30 @@
+{% include 'breadcrumbs' %}
+<nav id="toc-nav">
+    <details id="toc-details" class="nav" open="">
+        <summary>Page content</summary>
+        <div id="toc"></div>
+    </details>
+</nav>
+<article>
+    <header>
+        <h1>{{ meta.h1 }}</h1>
+        <p>
+            {% if article.author %}{{ article.author }}<br>{% endif article.author %}<time itemprop="dateModified">{{ article.publishAt | date }}</time> 
+    	</p>    
+    </header>
+    {{ article.excerpt }}
+    <hr>
+    <div id="main-content"  class="{{ article.format }}">{{ article.html }}</div>
+    <nav id="next-prev">
+        <p class="prev">
+            {% unless article.previous == empty %}
+            <a href="{{ article.previous | url }}">&larr; {{ 'Previous' | t }}<br>{{ article.previous.title }}</a>
+            {% endunless %}            
+        </p>
+        <p class="next">
+            {% unless article.next == empty %}
+            <a href="{{ article.next | url }}">{{ 'Next' | t }} &rarr;<br>{{ article.next.title }}</a>
+            {% endunless %}            
+        </p>
+    </nav>
+</article>

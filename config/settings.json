@@ -1,0 +1,375 @@
+{
+  "name": "Landing-page canvas",
+  "version": "1.0.0",
+  "developer": "Cradle Systems",
+  "description": "Empty index-page theme, for quick launches of landing-pages",
+  "source": "https://github.com/CradleCMS/Landing-page-canvas",
+  "homepage": "https://cradlecms.com",
+  "support": "mailto:hi@cradlecms.com",
+  "sections": [
+    {
+      "key": "global_settings",
+      "type": "section",
+      "caption": "Global settings",
+      "settings": [
+        {
+          "caption": "Border radius",
+          "key": "ok-br",
+          "options": [
+            {
+              "caption": "None",
+              "value": "0"
+            },
+            {
+              "caption": "0.25 rem",
+              "value": "0.25rem"
+            },
+            {
+              "caption": "0.5 rem",
+              "value": "0.5rem"
+            },
+            {
+              "caption": "1 rem",
+              "value": "1rem"
+            }
+          ],
+          "type": "select"
+        },
+        {
+          "caption": "Header font",
+          "description": "Make sure to provide both font-file formats",
+          "key": "fontHeadingHeader",
+          "type": "header"
+        },
+        {
+          "caption": "Use custom font",
+          "key": "fontHeadingEnable",
+          "type": "checkbox"
+        },
+        {
+          "caption": "Font woff2",
+          "key": "fontHeadingWOFF2",
+          "type": "asset"
+        },
+        {
+          "caption": "Font TTF",
+          "key": "fontHeadingTTF",
+          "type": "asset"
+        }
+      ],
+      "default": null
+    },
+    {
+      "key": "colors",
+      "type": "section",
+      "caption": "Colors",
+      "settings": [
+        {
+          "caption": "Index",
+          "key": "colorIndex",
+          "type": "header"
+        },
+        {
+          "caption": "Background color",
+          "default": "#000",
+          "key": "color-index-bg",
+          "type": "color"
+        },
+        {
+          "caption": "Text and link color",
+          "default": "#fff",
+          "key": "color-index-txt",
+          "type": "color"
+        },
+        {
+          "caption": "Button bg",
+          "default": "#fff",
+          "key": "color-index-btn",
+          "type": "color"
+        },
+        {
+          "caption": "Button tct",
+          "default": "#fff",
+          "key": "color-index-btn-txt",
+          "type": "color"
+        },
+        {
+          "caption": "Navigation",
+          "key": "colorNav",
+          "type": "header"
+        },
+        {
+          "caption": "Background color",
+          "default": "#000",
+          "key": "color-nav-bg",
+          "type": "color"
+        },
+        {
+          "caption": "Text and link color",
+          "default": "#fff",
+          "key": "color-nav-txt",
+          "type": "color"
+        },
+        {
+          "caption": "General colors",
+          "key": "general_colors",
+          "type": "header"
+        },
+        {
+          "caption": "Buttons",
+          "default": "#3e67fa",
+          "description": "Accent color used mainly for buttons",
+          "key": "color-accent-0",
+          "type": "color"
+        },
+        {
+          "caption": "Highlight text (--ok-t-hl)",
+          "default": "#ffcf30",
+          "key": "color-t-hl",
+          "type": "color"
+        },
+        {
+          "caption": "Heading color",
+          "default": "#111111",
+          "description": "Used for headings: h1, h2, h3 and h4",
+          "key": "color-hc-0",
+          "type": "color"
+        },
+        {
+          "caption": "Text color",
+          "default": "#000000",
+          "description": "Used for most text",
+          "key": "color-tc-0",
+          "type": "color"
+        },
+        {
+          "caption": "Less prominent text color",
+          "default": "#747474",
+          "description": "Used for figcaptions etc.",
+          "key": "color-tc-1",
+          "type": "color"
+        },
+        {
+          "caption": "Disabled text color",
+          "default": "#848484",
+          "key": "color-tc-2",
+          "type": "color"
+        },
+        {
+          "caption": "Accent text color",
+          "default": "#3173de",
+          "description": "Used for links and similar",
+          "key": "color-tc-accent",
+          "type": "color"
+        },
+        {
+          "caption": "Code block text color",
+          "default": "#c23a30",
+          "key": "color-tc-code",
+          "type": "color"
+        },
+        {
+          "caption": "Bg color (b-0)",
+          "default": "#ffffff",
+          "description": "Main bg color",
+          "key": "color-bg-0",
+          "type": "color"
+        },
+        {
+          "caption": "Bg color (b-1)",
+          "default": "#f0f0f0",
+          "key": "color-bg-1",
+          "type": "color"
+        },
+        {
+          "caption": "Bg color (b-2)",
+          "default": "#cccccc",
+          "key": "color-bg-2",
+          "type": "color"
+        }
+      ],
+      "default": null
+    },
+    {
+      "key": "header",
+      "type": "section",
+      "caption": "Navigation",
+      "settings": [
+        {
+          "caption": "Main nav linklist",
+          "default": "Select linklist",
+          "key": "main_nav",
+          "type": "linklist"
+        },
+        {
+          "caption": "Footer links",
+          "default": "Select linklist",
+          "key": "footer-nav",
+          "type": "linklist"
+        }
+      ],
+      "default": null
+    },
+    {
+      "key": "index",
+      "type": "section",
+      "caption": "Index page",
+      "settings": [
+        {
+          "caption": "Background video",
+          "description": "Recommendation: minimum 1024px x 1024px, mp4-format",
+          "key": "headerOtfVideo",
+          "type": "video"
+        },
+        {
+          "caption": "Title",
+          "key": "heroTitle",
+          "rows": 6,
+          "type": "textarea"
+        },
+        {
+          "caption": "Learn more page",
+          "default": "Select page",
+          "key": "heroButton",
+          "type": "page"
+        }
+      ],
+      "default": null
+    },
+    {
+      "key": "closed",
+      "type": "section",
+      "caption": "Closed site",
+      "settings": [
+        {
+          "caption": "Background image",
+          "key": "closed_header_bg_image",
+          "type": "header"
+        },
+        {
+          "caption": "Use image for background",
+          "key": "closed_bgimage_use",
+          "type": "checkbox"
+        },
+        {
+          "caption": "Background image",
+          "description": "Format: jpg-file, minimum 1024px x 1024p",
+          "filename": "closed-bg.jpg",
+          "key": "closed_bgimage",
+          "type": "asset"
+        },
+        {
+          "caption": "Message",
+          "key": "closed_header_text",
+          "type": "header"
+        },
+        {
+          "caption": "Title",
+          "key": "closed_title",
+          "type": "text"
+        },
+        {
+          "caption": "Text",
+          "key": "closed_text",
+          "type": "text"
+        },
+        {
+          "caption": "Image",
+          "key": "closed_header_fg_image_header",
+          "type": "header"
+        },
+        {
+          "caption": "Show image",
+          "key": "closed_fgimage_use",
+          "type": "checkbox"
+        },
+        {
+          "caption": "Size",
+          "key": "closed_fgimage_size",
+          "options": [
+            {
+              "caption": "Small, 150px",
+              "value": "150"
+            },
+            {
+              "caption": "Medium, 300px",
+              "value": "300"
+            },
+            {
+              "caption": "Maximum, 500px",
+              "value": "500"
+            }
+          ],
+          "type": "select"
+        },
+        {
+          "caption": "Upload image",
+          "description": "Format: png-file, 500px wide",
+          "filename": "closed-fg.png",
+          "key": "closed_fgimage",
+          "type": "asset"
+        },
+        {
+          "caption": "Button",
+          "key": "closed_header_button",
+          "type": "header"
+        },
+        {
+          "caption": "Button text",
+          "key": "closed_button_text",
+          "type": "text"
+        },
+        {
+          "caption": "Add link",
+          "key": "closed_button_link",
+          "type": "text"
+        }
+      ],
+      "default": null
+    },
+    {
+      "key": "social_media",
+      "type": "section",
+      "caption": "Social Media Links",
+      "settings": [
+        {
+          "caption": "Social links",
+          "description": "All links must begin with \u003ci\u003ehttp://\u003c/i\u003e or \u003ci\u003ehttps://\u003c/i\u003e",
+          "key": "social_links",
+          "type": "header"
+        },
+        {
+          "caption": "Show links",
+          "key": "social_show_links",
+          "type": "checkbox"
+        },
+        {
+          "caption": "Facebook URL",
+          "key": "social_facebook_url",
+          "type": "text"
+        },
+        {
+          "caption": "Instagram URL",
+          "key": "social_instagram_url",
+          "type": "text"
+        },
+        {
+          "caption": "Twitter URL",
+          "key": "social_twitter_url",
+          "type": "text"
+        },
+        {
+          "caption": "YouTube URL",
+          "key": "social_youtube_url",
+          "type": "text"
+        },
+        {
+          "caption": "LinkedIn URL",
+          "key": "social_linkedin_url",
+          "type": "text"
+        }
+      ],
+      "default": null
+    }
+  ]
+}

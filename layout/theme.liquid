@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+        	{{ site.name }} {% if meta.title != blank and meta.title != site.name %} | {{meta.title}}{% endif %}
+        </title>	
+        <meta name="description" content="{{ metaDescription | escape }}" />
+        <meta name="keywords" content="{{ metaKeywords | escape }}" />
+        <link rel="canonical" href="{{ canonicalUrl }}" />
+        {% if template == 'index' %}
+        <script type="application/ld+json">
+            {% include 'structured-data' %}
+        </script>
+        {% endif %}
+        {% include 'open-graph-tags' %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        {{ 'site.css' | stylesheet_tag }}
+        {{ 'gold-landing.css' | stylesheet_tag }}
+    </head>
+    <body id="{{ meta.title | handle }}" class="template-{{ template | replace: '.', ' ' | split: ' ' | first | handle }}">
+        {% include 'siteNav' %}
+        {% if template == 'index' %}
+            {{ contentForLayout }}
+        {% else %}
+        <div class="basic">
+            <main id="main-content" tabindex="-1">
+                {{ contentForLayout }}
+            </main>
+        </div>
+        {% endif %}
+    </body>
+    {{ 'alpine.min.js' | script_tag }}
+    {{ 'site.js' | script_tag }}
+    {% component 'alang.liquid' %}
+    {% component 'asearch.js' %}
+    {% component 'amodal' %}
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html id="restricted">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+        	{{ site.name }} {% if meta.title != blank and meta.title != site.name %} | {{meta.title}}{% endif %}
+        </title>	
+        <meta name="description" content="{{ metaDescription | escape }}" />
+        <meta name="keywords" content="{{ metaKeywords | escape }}" />
+        <link rel="canonical" href="{{ canonicalUrl }}" />
+        <script type="application/ld+json">
+            {% include 'structured-data' %}
+        </script>
+        {% include 'open-graph-tags' %}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="stylesheet" type="text/css" href="{{ 'site.css.liquid' | asset_url }}">
+        {{ settings.head_extra_code }}
+    </head>
+    <body id="{{ meta.title | handle }}" style="background-image: url('{{ settings.closed_bgimage | asset_img_url: settings.closed_bgimage_size,'0' }}'); background-position: center;">
+        <main>
+            <div class="message">
+                  {% if settings.closed_fgimage_use %}
+                    <img src="{{ settings.closed_fgimage | asset_img_url: settings.closed_fgimage_size,'0' }}">
+                  {% endif %}
+                  {% if settings.closed_title %}
+                    <h1>{{ settings.closed_title | t:'default' }}</h1>
+                  {% endif %}
+                  {% if settings.closed_text %}
+                    <p>{{ settings.closed_text | t:'default' }}</p>
+                  {% endif %}
+                  {% if settings.closed_button_link and settings.closed_button_text %}
+                    <a href="{{ settings.closed_button_link }}">{{ settings.closed_button_text | t:'default' }}</a>
+                  {% endif %}
+                {% if settings.social_show_links %}
+                    <h4>{{ 'Connect on social' | t:'default' }}</h4>
+                    <nav>
+                        {% include 'socialmedia-icon-links' %}
+                    </nav>
+                {% endif %}
+            </div>
+        </main>
+    </body>
+</html>

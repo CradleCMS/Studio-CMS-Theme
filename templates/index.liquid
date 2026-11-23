@@ -1,0 +1,14 @@
+<main>
+  <div class="index">
+    {% if settings.headerOtfVideo != empty %}
+    <video autoplay muted playsinline loop id="hero-video">
+      <source src="{{ settings.headerOtfVideo | asset_url }}" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>  
+    {% endif %}
+    <h1 class="title">
+      {{ settings.heroTitle | t | def:'Hi, we are Gold Interactive—and we love digital branding, user experience, and technology' }}
+    </h1>
+    <a href="{{ settings.heroButton | url | def:'page/about' }}" class="hero-button btn">{{'Learn more' | t}}</a>
+  </div>
+</main>

@@ -1,0 +1,35 @@
+<a-modal target="nav-trigger" effect="fadein fadeout" padding="2% 5%" width="100%" align="start" top="0" bottom="0" right="0" left="0">
+    <ul class="menu">
+        {% for link in navigation[settings.main_nav].links %}
+        <li class="link">
+            <a href="{{ link | url }}">{{ link.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="line-wrapper">
+      <div class="line"></div>
+    </div>
+    <div class="nav-footer">
+      <div class="nav-footer-group -left">
+        <p>{{ site.name }}</p>
+        {% if settings.social_show_links %}
+        <nav>
+            {% include 'socialmedia-icon-links' %}
+        </nav>
+        {% endif %}
+      </div>
+      <div class="nav-footer-group -right">
+        {% for link in navigation[settings.footer-nav].links %}
+            <a href="{{ link | url }}">{{ link.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+</a-modal>
+<div id="nav-trigger" class="nav-trigger-container">
+  <div class="nav-trigger-background"></div>
+  <div class="hamburger nav-trigger">
+    <span class="ingredient meat"></span>
+    <span class="ingredient tomato"></span>
+    <span class="ingredient salad"></span>
+  </div>
+</div>

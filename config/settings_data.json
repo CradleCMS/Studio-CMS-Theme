@@ -1,0 +1,39 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "closed_fgimage_size": "150",
+      "closed_text": "We are closed for the moment, check in later!",
+      "closed_title": "We are closed",
+      "color-accent-0": "#000000",
+      "color-bg-0": "#feffff",
+      "color-index-bg": "#948373",
+      "color-index-btn": "#000003",
+      "color-index-btn-txt": "#fff3dc",
+      "color-index-txt": "#f4f0e9",
+      "color-nav-bg": "#000000",
+      "color-nav-txt": "#bdb2a6",
+      "color-tc-accent": "#004d8c",
+      "footer-nav": {
+        "_key": "footer/footer-nav",
+        "entity": "navigation",
+        "id": "18ea6905-75a7-8c5a-8bdd-25dbd6326646",
+        "navigation": "footer",
+        "parent": ""
+      },
+      "heroTitle": "Hi, we are Studio Interactive and we love digital branding, user experience, and technology ",
+      "main_nav": {
+        "_key": "header/main_nav",
+        "entity": "navigation",
+        "id": "17f4d253-8abc-8236-84b4-37340dec5918",
+        "navigation": "main",
+        "parent": ""
+      },
+      "ok-br": "0.25rem",
+      "social_facebook_url": "/",
+      "social_linkedin_url": "/",
+      "social_show_links": true,
+      "social_twitter_url": "/"
+    }
+  }
+}
